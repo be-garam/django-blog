@@ -6,3 +6,10 @@
     <li>{{comment.author}}/{{comment.created_date}}: {{comment.text}}</li>
     {% endfor %}
 </ul>
+<form method="POST">
+    {% csrf_token %}
+    <label>Add Comment</label> <br/>
+    <input type="text" name="author" placeholder="who are you"> <br/>
+    <input type="text" name="text" placeholder="new comment?"> <br/>
+    <button type="submit">Add comment</button>
+</form>
