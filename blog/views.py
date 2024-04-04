@@ -1,29 +1,35 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import include
 from django.utils import timezone
+from django.views import generic
 
 from .models import Post, Comment
 from .forms import CommentForm
 
-def post_list(request):
-    posts = Post.objects.filter(date_posted__lte=timezone.now()).order_by('date_posted')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+class PostListView(generic.ListView):
+    model = Post
+    template_name = 'blog/post_list.html'
+    context_object_name = 'posts'
+    ordering = ['date_posted']
 
-def post_detail(request, post_id):
-    # post = Post.objects.get(pk=post_id)
-    post = get_object_or_404(Post, pk=post_id)
-    comments = post.comments.all()  # get all comments for this post
+class PostDetailView(generic.DetailView):
+    model = Post
+    template_name = 'blog/post_detail.html'
+    context_object_name = 'post'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = self.object.comments.all()
+        context['form'] = CommentForm()
+        return context
 
-    if request.method == 'POST':
-        form = CommentForm(request.POST or None)
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)  # don't save the Comment instance yet
-            comment.post = post  # set the post attribute
-            comment.save()  # now save the Comment instance
-        return redirect('blog:post_detail', post_id=post_id)
-    else:
-        all_comments = Comment.objects.all()
-        return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'all_comments': all_comments})
-    return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments})
+            comment = form.save(commit=False)
+            comment.post = self.object
+            comment.save()
+        return redirect('blog:post_detail', pk=self.object.pk)

@@ -14,7 +14,8 @@ Blog making base on Bootstrap and Django
 - [x] show post data - 🛸 2024.04.03 
 - [x] add detail page - 🛸 2024.04.03 
 - [x] add comment function - 🛸 2024.04.03 
-- [ ] apply bootstrap
+- [ ] refactoring code
+- [ ] apply bootstrap(make new branch)
 - [ ] redesign by my self
 
 ### Thanks 💪
