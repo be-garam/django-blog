@@ -1,0 +1,19 @@
+.conatiner{
+    padding: 120px;
+    padding-bottom: 120px;
+}
+
+.blog-list{
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.post{
+    margin-bottom: 12px;
+    max-width: 1440px;
+}
+
+.footer {
+    padding: 48px; /* Adjust the value as per your requirement */
+}
+
