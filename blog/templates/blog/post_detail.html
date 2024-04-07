@@ -1,15 +1,54 @@
-<h1>{{post.title}}</h1>
-<p>published: {{post.date_posted}}</p>
-<p>{{ post.content|linebreaksbr }}</p>
-<ul>
-    {% for comment in comments %}
-    <li>{{comment.author}}/{{comment.created_date}}: {{comment.text}}</li>
-    {% endfor %}
-</ul>
-<form method="post">
-    {% csrf_token %}
-    <label for="comment">Comment: </label> <br/>
-    <input id='author' type="text" name="author" placeholder="who are you" required> <br/>
-    <input id='comment' type="text" name="text" placeholder="new comment?" maxlength="200" required> <br/>
-    <button type="submit">Add comment</button>
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}", type="text/css">
+    </head>
+
+    <body>
+        <nav class="navbar sticky-top bg-body-tertiary" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand me-lg-auto" href="./post_list.html">
+                    <img src="{% static 'assesst/logo.png' %}" width="24" height="24">
+                    Be-Garam's Django Blog
+                </a>
+                <ul class="nav col-12 col-lg-auto mb-2 justify-content-end mb-md-0">
+                    <li><a href="./post_list.html" class="nav-link px-2 link-body-emphasis">Blog</a></li>
+                    <li><a href="./about.html" class="nav-link px-2 link-body-emphasis">About</a></li>
+                    <li><a href="./contact.html" class="nav-link px-2 link-body-emphasis">Contact me</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container my-5">
+            <div class="row  my-5">
+                <h1>{{post.title}}</h1>
+                <p>published: {{post.date_posted}}</p>
+                <p>{{ post.content|linebreaksbr }}</p>
+            </div>
+
+            <div class="row my-5">
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="comment">Comment: </label> <br/>
+                    <input id='author' type="text" name="author" placeholder="who are you" required> <br/>
+                    <input id='comment' type="text" name="text" placeholder="new comment?" maxlength="200" required> <br/>
+                    <button type="submit">Add comment</button>
+                </form>
+            </div>
+
+            <div class="row my-5">
+                <ul>
+                    {% for comment in comments %}
+                    <li>{{comment.author}}/{{comment.created_date}}: {{comment.text}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    </body>
+</html>
