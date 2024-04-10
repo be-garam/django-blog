@@ -1,15 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}", type="text/css">
+        <script src="https://kit.fontawesome.com/bd8516d1a7.js" crossorigin="anonymous"></script>
     </head>
-    
     <body>
-        <h1>About me</h1>
-        <p>Hi there, this is my introducing page.<br>I'm a student who is learning Django and Python.</p>
-        <p>My goal is to become a full-stack developer.</p>
-        <p>Thank you for visiting my blog.</p>
+        <nav class="navbar sticky-top bg-body-tertiary" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand me-lg-auto" href="./post_list.html">
+                    <img src="{% static 'assesst/logo.png' %}" width="24" height="24">
+                    Be-Garam's Django Blog
+                </a>
+                <ul class="nav col-12 col-lg-auto mb-2 justify-content-end mb-md-0">
+                    <li><a href="./post_list.html" class="nav-link px-2 link-body-emphasis">Blog</a></li>
+                    <li><a href="./about.html" class="nav-link px-2 link-body-emphasis">About</a></li>
+                    <li><a href="./contact.html" class="nav-link px-2 link-body-emphasis">Contact me</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="px-4 py-5 my-5 text-center">
+                <img class="d-block mx-auto mb-4" src="{% static 'assesst/logo.png' %}" alt="" width="120" height="120">
+                <h1 class="display-5 fw-bold text-body-emphasis">Hi there 👋, I'm Kang 🌊 </h1>
+                <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Hi there, this is my introducing page.<br>I'm a student who is learning Django and Python.</p>
+                <p class="lead mb-4">My goal is to become a full-stack developer.</p>
+                <p class="lead mb-4">Thank you for visiting my blog.</p>
+            </div>
+        </div>
+
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">© 2024 Be-Garam's Django Blog</p>
+                <a href="https://github.com/be-garam">
+                    <p class="m-0 text-center text-white"><i class="fa-brands fa-github"></i> GitHub</p>
+                </a>
+            </div>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>    
     </body>
 </html>

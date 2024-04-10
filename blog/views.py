@@ -10,9 +10,16 @@ from .forms import CommentForm
 
 class PostListView(generic.ListView):
     model = Post
+    ordering = ['-date_posted']
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
     ordering = ['date_posted']
+
+class AboutView(generic.TemplateView):
+    template_name = 'blog/about.html'
+
+class ContactView(generic.TemplateView):
+    template_name = 'blog/contact.html'
 
 class PostDetailView(generic.DetailView):
     model = Post
