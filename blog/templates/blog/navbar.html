@@ -1,0 +1,14 @@
+{% load static %}
+<nav class="navbar sticky-top bg-body-tertiary" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand me-lg-auto" href="./post_list.html">
+            <img src="{% static 'assesst/logo.png' %}" width="24" height="24">
+            Be-Garam's Django Blog
+        </a>
+        <ul class="nav col-12 col-lg-auto mb-2 justify-content-end mb-md-0">
+            <li><a href="{% url 'blog:post_list' %}" class="nav-link px-2 link-body-emphasis">Blog</a></li>
+            <li><a href="{% url 'blog:about' %}" class="nav-link px-2 link-body-emphasis">About</a></li>
+            <li><a href="{% url 'blog:contact' %}" class="nav-link px-2 link-body-emphasis">Contact me</a></li>
+        </ul>
+    </div>
+</nav>
