@@ -15,9 +15,9 @@
                     Be-Garam's Django Blog
                 </a>
                 <ul class="nav col-12 col-lg-auto mb-2 justify-content-end mb-md-0">
-                    <li><a href="./post_list.html" class="nav-link px-2 link-body-emphasis">Blog</a></li>
-                    <li><a href="./about.html" class="nav-link px-2 link-body-emphasis">About</a></li>
-                    <li><a href="./contact.html" class="nav-link px-2 link-body-emphasis">Contact me</a></li>
+                    <li><a href="{% url 'blog:post_list' %}" class="nav-link px-2 link-body-emphasis">Blog</a></li>
+                    <li><a href="{% url 'blog:about' %}" class="nav-link px-2 link-body-emphasis">About</a></li>
+                    <li><a href="{% url 'blog:contact' %}" class="nav-link px-2 link-body-emphasis">Contact me</a></li>
                 </ul>
             </div>
         </nav>
